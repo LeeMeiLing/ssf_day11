@@ -1,5 +1,6 @@
 package ibf2022.ssf.day11.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;
@@ -20,12 +21,14 @@ public class TimeController {
     public String getTime(Model model){
 
         Date date = new Date();
-        String currentTime = date.toString();  // this is the data, need to put in a model
+        //String currentTime = date.toString();  // this is the data, need to put in a model
 
-        System.out.printf(">>the current time is %s\n",currentTime);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+
+        System.out.printf(">>the current time is %s\n",formatter.format(date));
 
         // Add the time to model
-        model.addAttribute("time", currentTime);
+        model.addAttribute("time", date);
 
         return "time";
 
